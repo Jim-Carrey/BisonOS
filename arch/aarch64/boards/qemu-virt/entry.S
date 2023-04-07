@@ -1,7 +1,11 @@
-.section ".text.boot"
+/*
+ * entry.S
+ */
 
-.global _start
-_start:
+#include "asm.h"
+
+.section ".text.boot"
+ENTRY(_start)
     //disable Debug/Asynchronous/IRQ/FIQ interrupts
     mrs x0 , DAIF
     orr x0, x0, 0x3c0
@@ -72,9 +76,9 @@ bss_loop:
     blt bss_loop
     /*start c program*/
     bl kernel_main    
+ENDPROC(_start)
 
-.global _disable_mmu
-_disable_mmu:
+ENTRY(_disable_mmu)
     //disable MMU I/D Cache
     //bit[0] : EL1/EL0 MMU
     //bit[2] : EL1/EL0 Data Cache
@@ -86,3 +90,4 @@ _disable_mmu:
     msr sctlr_el1, x2
     isb
     ret
+ENDPROC(_disable_mmu)
