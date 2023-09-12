@@ -59,6 +59,14 @@ not_in_el2:
     mov sp, x21                   //set el1 sp
     
     bl _disable_mmu
+
+    //Don't trap any SIMD/FP instructions in both EL0 and EL1
+    mov x1, #0x00300000
+    msr cpacr_el1, x1
+    //applying context change
+    dsb     ish
+    isb
+
     bl clear_bss
 
 in_el0:

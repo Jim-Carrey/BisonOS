@@ -26,6 +26,7 @@ void uart_puts(const char *str)
 
 int kernel_main(int argc, char *argv[])
 {
-    uart_puts("hello, this is BisonOS by jim carrey!");
+    uart_puts("hello, this is BisonOS by jim carrey!\n");
+    uart_puts("arm architecture mechine!");
     while(1);
 }
