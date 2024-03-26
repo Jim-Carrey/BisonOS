@@ -3,8 +3,12 @@
 MACHINE := arm64
 
 AARCH64_OBJS = \
-  arch/aarch64/boards/qemu-virt/entry.o \
-  init/main.o
+	arch/aarch64/mm.o \
+	arch/aarch64/head.o \
+	arch/aarch64/boards/raspberry-pi/pl_uart.o \
+	lib/printk.o \
+	lib/string.o \
+	init/main.o
 
 RISC-V_OBJS = \
   arch/riscv/boards/qemu-virt/entry.o \
@@ -13,11 +17,12 @@ RISC-V_OBJS = \
 
 SUPPORT_TARGET :
 ifeq ($(MACHINE),arm64)
-    TOOLPREFIX := aarch64-none-linux-gnu-
-    LINKER_SCRIPT 	:= ./arch/aarch64/boards/qemu-virt/kernel.ld
+    TOOLPREFIX := aarch64-linux-gnu-
+    LINKER_SCRIPT 	:= ./arch/aarch64/boards/raspberry-pi/kernel.ld
     BUILD_OBJS := $(AARCH64_OBJS)
     QEMU	:= qemu-system-aarch64
-    QEMUOPTS += -M virt -cpu cortex-a53 -m 128M -nographic -kernel vmbison
+    QEMUOPTS += -machine raspi3 -serial null -serial mon:stdio -nographic -kernel vmbison
+    CFLAGS = -Iinclude -nostdlib -mgeneral-regs-only -ffreestanding -nostartfiles
     ifeq ($(wildcard ./build),)
     $(shell mkdir -p ./build)
     endif
