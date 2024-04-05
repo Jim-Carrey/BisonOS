@@ -1,5 +1,5 @@
-#ifndef _BENOS_TYPE_H
-#define _LINUX_TYPE_H
+#ifndef _TYPE_H_
+#define _TYPE_H_
 
 #ifdef __ASSEMBLY__
 #define _AC(X,Y)	X
@@ -41,4 +41,4 @@ typedef unsigned int size_t;
 
 #endif
 
-#endif
+#endif /* _TYPE_H_ */

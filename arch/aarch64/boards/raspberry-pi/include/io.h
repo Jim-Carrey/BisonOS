@@ -1,6 +1,6 @@
 
-#ifndef _P_IO_H
-#define _P_BASE_H
+#ifndef _IO_H_
+#define _IO_H_
 
 #if 1
 #define __arch_getl(a)			(*(volatile unsigned int *)(a))
@@ -30,4 +30,4 @@ static inline void delay(unsigned int n)
 		;
 }
 
-#endif
+#endif /* _IO_H_ */

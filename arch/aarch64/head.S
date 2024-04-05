@@ -27,8 +27,8 @@ el3_entry:
     ldr x0, =SCTLR_EL2_VALUE_MMU_DISABLED
     msr sctlr_el2, x0
 
-    //ldr x0, =HCR_HOST_NVHE_FLAGS
-	//msr hcr_el2, x0
+    ldr x0, =HCR_HOST_NVHE_FLAGS
+	msr hcr_el2, x0
 
     ldr x0, =SCR_VALUE
 	msr scr_el3, x0
@@ -46,8 +46,8 @@ el2_entry:
 	msr sctlr_el2, x0
 
 	/* The Execution state for EL1 is AArch64 */
-	//ldr x0, =HCR_HOST_NVHE_FLAGS
-	//msr hcr_el2, x0
+	ldr x0, =HCR_HOST_NVHE_FLAGS
+	msr hcr_el2, x0
 
 	ldr x0, =SCTLR_EL1_VALUE_MMU_DISABLED
 	msr sctlr_el1, x0
@@ -61,12 +61,6 @@ el2_entry:
 	eret
 
 el1_entry:
-    //set vector address to vbar_elx reg
-	//ldr     x5, =vectors
-	//msr     vbar_el1, x5
-	//isb
-
-    //clear .bss
     adr x0, bss_begin
 	adr x1, bss_end
 	sub x1, x1, x0
