@@ -1,7 +1,12 @@
+#include "type.h"
 #include "printk.h"
 #include "uart.h"
 #include "timer.h"
 #include "irq.h"
+#include "mm.h"
+#include "memory.h"
+
+extern char _bss[], _ebss[];
 
 void kernel_main(void)
 {
@@ -12,6 +17,8 @@ void kernel_main(void)
     printk("hello, this is BisonOS!\n");
 
     printk("copyright @jimcarrey\n");
+
+    mem_init((u64)_ebss, TOTAL_MEMORY);
 
     timer_init();
     armv8_local_irq_enable();

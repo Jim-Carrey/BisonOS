@@ -6,6 +6,7 @@ LD	= $(TOOLPREFIX)ld
 
 CFLAGS = -Iinclude \
 		 -Ilib/include \
+		 -Iarch/aarch64 \
 		 -Iarch/aarch64/boards/raspberry-pi/include \
 		 -nostdlib \
 		 -mgeneral-regs-only \
@@ -19,7 +20,8 @@ LINKER_SCRIPT  = ./arch/aarch64/boards/raspberry-pi/kernel.ld
 SRC_DIR = ./arch/aarch64 \
 		  ./arch/aarch64/boards/raspberry-pi \
 		  ./lib \
-		  ./init
+		  ./init \
+		  ./mm
 
 BUILD_DIR := ./build
 
