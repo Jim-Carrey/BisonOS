@@ -21,7 +21,8 @@ SRC_DIR = ./arch/aarch64 \
 		  ./arch/aarch64/boards/raspberry-pi \
 		  ./lib \
 		  ./init \
-		  ./mm
+		  ./mm \
+		  ./kernel
 
 BUILD_DIR := ./build
 

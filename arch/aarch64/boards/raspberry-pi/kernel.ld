@@ -23,6 +23,8 @@ SECTIONS
 	_data = .;
 	.data : {
 		*(.data)
+		. = ALIGN(0x1000);
+		*(.data.init_proc)
 	}
 
 	. = ALIGN(0x8);

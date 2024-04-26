@@ -1,6 +1,8 @@
 #ifndef _ASM_OFFSETS_H_
 #define _ASM_OFFSETS_H_
 
+#include "type.h"
+
 #define SAVE_CONTEXT_SIZE 0x128 /* sizeof(struct excp_context) */
 #define SAVE_X0           0x0   /* OFFSETOF(struct excp_context, user_regs.regs[0]) */
 #define SAVE_X1           0x8   /* OFFSETOF(struct excp_context, user_regs.regs[1]) */
@@ -39,5 +41,5 @@
 #define SAVE_CALLNO       0x110 /* OFFSETOF(struct excp_context, callno) */
 #define SAVE_TRAP_EL2     0x118 /* OFFSETOF(struct excp_context, trap_el2) */
 #define SAVE_TRAP_MODE32  0x120 /* OFFSETOF(struct excp_context, trap_mode32) */
-
+#define THREAD_CPU_CONTEXT 0x18 /* OFFSETOF(struct proc, cpu_context) */
 #endif

@@ -4,6 +4,9 @@
 #include "mm.h"
 #include "sysregs.h"
 
+init_proc_sp_addr:
+	.quad init_proc_union + PAGE_SIZE
+
 .section ".text.boot"
 .globl _start
 _start:
@@ -71,6 +74,10 @@ el1_entry:
 	sub x1, x1, x0
 	bl memzero
 
-    mov sp, #LOW_MEMORY	//set stack for C func running environment_4kb
+	/* set init_proc sp above 4kb on init_proc_union*/
+	ldr x8, = init_proc_sp_addr
+	ldr x9, [x8]
+	mov sp, x9
+
 	bl kernel_main      //start C program
 	b proc_hang         //should never come here
