@@ -23,11 +23,13 @@ void kernel_main(void)
 {
     uart_init();
 
-    uart_send_string("hello, this is BisonOS!\r\n");
-
-    printk("hello, this is BisonOS!\n");
-
-    printk("copyright @jimcarrey\n");
+    printk(" ____    _                          ____     _____  \n");
+    printk("|  _ \\  (_)                        / __ \\   / ____| \n");
+    printk("| |_) |  _   ___    ___    _ __   | |  | | | (___   \n");
+    printk("|  _ <  | | / __|  / _ \\  | |_ \\  | |  | |  \\___ \\  \n");
+    printk("| |_) | | | \\__ \\ | (_) | | | | | | |__| |  ____) | \n");
+    printk("|____/  |_| |___/  \\___/  |_| |_|  \\____/  |_____/  \n");
+    printk("author by @jimcarrey\n");
 
     mem_init((u64)_ebss, TOTAL_MEMORY);
 
